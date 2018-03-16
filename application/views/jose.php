@@ -13,7 +13,9 @@
 </head>
 <body>	
 
-<div class = "container">
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -21,33 +23,31 @@
 <br>
 <br>
 <!-- Login -->
-
+<div class = "container">
+<div class="row">
 <div class="col-sm-12">
   <center>
   <form method="post" id = "kakaiba">
-  <h1>Login</h1>
+  <h2>LOGIN YOUR ACOOUNT</h2>
   <br>
-
     <div class="form-group">
-      <input type="text" class="form-control" id="uid" placeholder="Username" label = "Username" name="uid">
+      <input type="text" class="form-control" id="uid" placeholder="Username" label = "Username" name="uid" style = "width: 100% !important">
       <?php echo form_error('uid'); ?>
     </div>
 
     <div class="form-group">
-      <input type="password" class="form-control" id="pwd" placeholder="Password" label = "Password" name="pwd">
+      <input type="password" class="form-control" id="pwd" placeholder="Password" label = "Password" name="pwd" style = "width: 100% !important">
       <?php echo form_error('pwd'); ?>
     </div>
-
-    		<input type="submit" name= "login" id = "login" class="btn btn-primary" value = "Login">
-    <br><br>
-    <!--
-    <input type="button" class="btn btn-default" data-toggle="modal" data-target="#regmodal" value ="Sign Up">
-    -->
+    <div class="form-group">
+    	<input type="checkbox" style=" width: 5% !important" onclick="myFunction()">Show Password
+    </div>
+     <div class="form-group">
+    	<input type="submit" name= "login" id = "login" class="btn btn-primary" value = "Login" style = "width: 100% !important">
   </form>
   </center>
 </div>
 </div>
-<div class="col-sm-4"></div>
 </center>
 
 
@@ -95,50 +95,18 @@
 
 	});
 
-</script>
 
-
-<!-- Register Script-->
-<script>
-	$(document).ready(function(){
-		$(document).on('submit', '#kakaibabe', function(e){
-			e.preventDefault();
-
-			$.ajax({
-				type : "POST",
-				url  : "<?php echo base_url();?>hello/register",
-				data : new FormData(this),
-				contentType: false,
-				processData: false,
-				beforeSend: function(){
-
-					$empty = $('form#kakaibabe').find("input").filter(function(){
-						return this.value === "";
-					});
-					if($empty.length){
-						swal('You must fill out all fields');
-						return false;
-					}
-				},
-				success: function(data){
-					if(data){
-							swal('Register Succesful');
-
-					}
-
-					else {
-						$('#kakaibabe')[0].reset();
-						swal("Invalid");
-					}
-
-				}
-			})
-			
-		});
-
-	});
+	function myFunction() {
+    var x = document.getElementById("pwd");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
 
 </script>
+
 
 
 

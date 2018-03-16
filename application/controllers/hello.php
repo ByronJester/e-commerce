@@ -128,31 +128,35 @@ class hello extends CI_Controller {
 }
 //Edit Product
 	public function uppro(){
-		$data = array(
-				'productname' => $pn,
-				'productcode' => $pc,
-				'stock' 			=> $st,
-				'price' 			=> $pr
-				);
-			$this->db->where('id',$id);
-			$this->db->update('addproduct', $data);
-
-				$hb = $this->bal->uppro($data);
-				if($hb){
-					echo "success";
-				}else{
-				return false;
-		}
-	}
-
-	public function deleteProd($pn){
-      $res = $this->bal->delProd($pn);
-      if($res){
-        echo "success";
+			$id = $this->input->post('prodid');
+      $data = array(
+          'productname'  => $this->input->post('prodname'),
+          'productcode'  => $this->input->post('prodcode'),
+          'stock'   		 => $this->input->post('prodsto'),
+          'price' 			 => $this->input->post('prodpri')
+   
+      );
+      $result = $this->bal->upprod($id,$data);
+      if($result){
+         echo "success";
       }else{
         return false;
       }
+    } 
+
+ //Delete Product
+
+	public function deleteProduct(){
+
+		$product = $this->input->post('product');
+		$res 		 = $this->bal->deleteProduct($product);
+		echo json_encode(array('code' => 2));
+
+
 	}
+
+
+
 }
 	
 

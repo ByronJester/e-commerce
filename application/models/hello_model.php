@@ -45,26 +45,20 @@ class Hello_model extends CI_Model {
 }
 
 //Edit Product
-	public function uppro($data){
-
-		$sql = "UPDATE `addproduct` SET `productname`=[pn],`productcode`=[pc],`stock`=[st],`price`=[pr] WHERE 1";
-		
-		$q = $this->db->query($sql, $data);
-		if($q){
-			echo 'success';
-		}else{
-			return false;
-	}
-}
-public function delProd($pn){
-      $this->db->where('productname',$pn);
-
-      $res = $this->db->delete('addproduct');
-      if($res){
-        return true;
-      }else{
-        return false;
-      }
+	public function upprod($id,$data){
+		 $this->db->where('product_ID',$id);
+   	 $query = $this->db->update('addproduct',$data);
+   	 if($query){
+   	 	echo 'success';
+   	 }else{
+   	 	return false;
+   	 }	
+   }
+//Delete Product
+   public function deleteProduct($data)
+   {
+   		$sql = "DELETE FROM addproduct WHERE product_ID = ?";
+   		return $this->db->query($sql, $data);		
    }
 
 
