@@ -12,7 +12,7 @@
 	<script src = "<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 	<style>
 		body {
-				background-image: url("fd.jpg");
+				background-image: url("");
     		background-repeat: no-repeat, repeat;
     		background-size: 100% 150%;
 		}
@@ -35,7 +35,7 @@
 <div class="col-sm-12">
   <center>
   <form method="post" id = "kakaiba">
-  <h2 style="color: white">LOGIN YOUR ACOOUNT</h2>
+  <h2>LOGIN YOUR ACOOUNT</h2>
   <br>
     <div class="form-group">
       <input type="text" class="form-control" id="uid" placeholder="Username" label = "Username" name="uid" style = "width: 100% !important">

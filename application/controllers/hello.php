@@ -27,12 +27,6 @@ class hello extends CI_Controller {
 				),
 
 			array(
-				'field' => 'em',
-				'label' => 'Email',
-				'rules' => 'Required',
-				'errors' => 'Please input $s'
-
-				),array(
 				'field' => 'pn',
 				'label' => 'Product Name',
 				'rules' => 'Required',
@@ -85,9 +79,8 @@ class hello extends CI_Controller {
 		if($this->form_validation->run() != FALSE){
 
 		}
-		$this->load->view('templates/header');
 		$this->load->view('jose');
-		$this->load->view('templates/footer');
+
 		}
 
 //Login
@@ -152,7 +145,15 @@ class hello extends CI_Controller {
 		$res 		 = $this->bal->deleteProduct($product);
 		echo json_encode(array('code' => 2));
 
+	}
 
+	public function Pmanage(){
+
+		$this->load->view('home_p');
+	}
+
+	public function customer(){
+		$this->load->view('customer');
 	}
 
 

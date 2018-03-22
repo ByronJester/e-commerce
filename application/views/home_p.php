@@ -8,19 +8,28 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
   <script src = "<?php echo base_url();?>assets/js/jquery.min.js"></script>
   <script src = "<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+  <script src = "<?php echo base_url();?>assets/js/angular.min.js"></script>
+  <script src = "<?php echo base_url();?>assets/js/angular-animate.js"></script>
   <input type="hidden" id="base_url" value="<?= base_url() ?>">
   <script type="text/javascript"> var base_url = $("#base_url").val();</script>
   <script src="<?= base_url('assets/js')?>/sweetalert2.all.js"></script>
 </head>
-<body>
+<body style = "background-color: #cccccc !important;">
 
 <!-- Navbar -->
-<nav class="navbar navbar-fixed">
-    <div class="container-fluid">
-      <div class="navbar-header">
-       <a class="navbar-brand" href="#">Yosi Break</a>
-      </div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li><a href="">Product Management</a></li>
+      <li><a href="customer">Product View</a></li>
+    </ul>
     </div>
+  </div>
 </nav>
 
 <!-- Add Product Form -->
@@ -57,16 +66,20 @@
           </div>
           </div>
       </form>
-
+      
 
 <!-- Product Table -->
-<div class="col-sm-8">
-  <input type="text" id="myProduct" onkeyup="mySearch()" placeholder="Search Product" style="width: 30% !important"><br>
-  <button class = "btn btn-primary" onclick="sortTable()" style="width: 16.5% !important">Sort by Name</button>
+<div class="col-sm-8" >
+<div class="panel panel-primary">
+<div class="panel-heading">Product Table</div>
+  <div class="panel-body">
+  <input type="text" id="myProduct" onkeyup="mySearch()" placeholder="Search Product" style="width: 60% !important"><br>
+  <!--<button class = "btn btn-primary" onclick="sortTable()" style="width: 33% !important">Sort by Name</button>-->
+        <div class = "table-responsive">
           <table class="table table-bordered" id = "ProductTable">
             <thead class="header">
               <tr>
-              <td><center>Product ID</center></td>
+                <td><center>Product ID</center></td>
                 <td><center>Product Name</center></td>
                 <td><center>Product Code</center></td>
                 <td><center>Stock</center></td>
@@ -80,6 +93,10 @@
     </div>
   </div>
 </div>
+</div>
+</div>
+</div>
+  
 
 <!-- Update Product Modal Form -->
 <div class="modal fade" id="editModal11" role="dialog">
@@ -89,26 +106,26 @@
         <div class="container">
           <form id = "yayaya">
               <div class="form-group">
-                <input type="hidden" class="form-control"  placeholder="Product ID" label = "Product ID" id="pid" name="prodid" style="width: 100% !important">
+                <input type="hidden" class="form-control"  placeholder="Product ID" label = "Product ID" id="pid" name="prodid" style="width: 95% !important">
               </div>
               <div class="form-group">
                 <label for="email">Product Name:</label>
-                <input type="text" class="form-control"  placeholder="Product Name" label = "Product Name" id="pname" name="prodname" style="width: 100% !important">
+                <input type="text" class="form-control"  placeholder="Product Name" label = "Product Name" id="pname" name="prodname" style="width: 95% !important">
               </div>
               <div class="form-group">
                 <label for="pcode">Product Code:</label>
-                <input type="text" class="form-control"  placeholder="Product Code" label = "Product Code" id="pcode" name="prodcode" style="width: 100% !important">
+                <input type="text" class="form-control"  placeholder="Product Code" label = "Product Code" id="pcode" name="prodcode" style="width: 95% !important">
               </div>
               <div class="form-group">
                 <label for="Stock">Stock:</label>
-                <input type="number" class="form-control"  placeholder="Stock" label = "Stock" id="sto" name="prodsto" style="width:100% !important">
+                <input type="number" class="form-control"  placeholder="Stock" label = "Stock" id="sto" name="prodsto" style="width:95% !important">
               </div>
               <div class="form-group">
                 <label for="Price">Price:</label>
-                <input type="number" class="form-control"  placeholder="Price" label = "Price" id="pri" name="prodpri" style="width:100% !important">
+                <input type="number" class="form-control"  placeholder="Price" label = "Price" id="pri" name="prodpri" style="width:95% !important">
               </div>
               <br>
-              <input type="submit" name= "update" id = "updateregister" class="btn btn-primary" value = "Update" style="width:100% !important">
+              <input type="submit" name= "update" id = "updateregister" class="btn btn-primary" value = "Update" style="width:95% !important">
             </form>
         </div>
       </div>
@@ -142,7 +159,7 @@ $(document).on('submit', '#kakaibabe', function(e){
         },
         success: function(data){
           if(data){
-
+            $('#kakaibabe')[0].reset();
             swal('Added Succesful');
           }
           else {
@@ -214,7 +231,7 @@ $(document).on('submit', '#kakaibabe', function(e){
           var i;
           for(i = 0; i < data.length; i++){
             html += '<tr>' +
-                  '<td>'+data[i].product_ID+'</td>' +
+            '<td>'+data[i].product_ID+'</td>' +
                   '<td>'+data[i].productname+'</td>' +
                   '<td>'+data[i].productcode+'</td>' +
                   '<td>'+data[i].stock+'</td>' +
@@ -288,7 +305,7 @@ $(document).on('submit', '#kakaibabe', function(e){
         }       
       }
     }
-/* Sort Product*/
+/* Sort Product */
 function sortTable() {
   var table, rows, switching, i, x, y, shouldSwitch;
   table = document.getElementById("ProductTable");
@@ -316,7 +333,6 @@ function sortTable() {
     }
   }
 }
-  
   </script> 
 
 

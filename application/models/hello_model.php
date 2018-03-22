@@ -15,7 +15,7 @@ class Hello_model extends CI_Model {
 		}
 	}
 
-//Account Table
+//Product Table
 	public function showAccounts(){
 
 		
